@@ -1,0 +1,7 @@
+{
+  "name": "DS18B@)",
+  "author": "Lucas Figg <lukeusmc@gmail.com",
+  "license": "MIT",
+  "version": "0.1.00",
+  "description": "DSB18XX Lib on Particle Photon"
+}
