@@ -27,7 +27,6 @@ void loop() {
 if (millis() > DS18B20nextSampleTime){
   getTemp();
   }
-  displayupdate();
 
   if (millis() > MetricnextPublishTime){
     Serial.println("Publishing now.");
