@@ -26,6 +26,38 @@ void DS18B20::resetsearch(){
     ds->reset_search();
 }
 
+void DS18B20::setResolution(uint8_t newResolution){
+  ds->reset();
+  ds->select(addr);
+  switch (newResolution){
+  case 12:
+      ds->write(TEMP_12_BIT);
+      break;
+  case 11:
+      ds->write(TEMP_11_BIT);
+      break;
+  case 10:
+      ds->write(TEMP_10_BIT);
+      break;
+  case 9:
+  default:
+      ds->write(TEMP_9_BIT);
+      break;
+  }
+  HAL_Delay_Milliseconds(20);
+  ds->reset();
+}
+
+bool DS18B20::readPowerSupply(){
+    bool ret = false;
+    ds->reset();
+    ds->select(addr);
+    ds->write(READPOWERSUPPLY);
+    if (ds->read_bit() == 0) ret = true;
+    ds->reset();
+    return ret;
+}
+
 void DS18B20::getROM(char szROM[]){
     sprintf(szROM, "%X %X %X %X %X %X %X %X", addr[0], addr[1], addr[2], addr[3], addr[4], addr[5], addr[6], addr[7]);
 }
