@@ -92,7 +92,7 @@ private:
       return GPIO_ReadInputDataBit(PIN_MAP[_pin].gpio_peripheral, PIN_MAP[_pin].gpio_pin);
     }
 
-  #elif PLATFORM_ID == 6 || PLATFORM_ID == 8 || PLATFORM_ID == 10 // Photon, P1 & Electron
+  #elif PLATFORM_ID == 6 || PLATFORM_ID == 8 || PLATFORM_ID == 10 || PLATFORM_ID == 88 // Photon, P1, Electron or RedBear Duo
     STM32_Pin_Info* PIN_MAP = HAL_Pin_Map(); // Pointer required for highest access speed
 
     inline void digitalWriteFastLow() {
@@ -122,7 +122,7 @@ private:
     }
 
   #else
-    #error "*** PLATFORM_ID not supported by this library. PLATFORM should be Core, Photon, or Electron ***"
+    #error "*** PLATFORM_ID not supported by this library. PLATFORM should be Core, Photon, Electron or RedBear Duo ***"
   #endif
 /**************End conditional fast pin access for Core and Photon*************/
 
