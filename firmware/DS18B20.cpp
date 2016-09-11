@@ -5,6 +5,10 @@ DS18B20::DS18B20(uint16_t pin){
     ds = new OneWire(pin);
 }
 
+DS18B20::~DS18B20(){
+
+}
+
 boolean DS18B20::search(){
     boolean isSuccess =  ds->search(addr);
 

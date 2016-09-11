@@ -25,6 +25,7 @@ private:
 
 public:
     DS18B20(uint16_t pin);
+    ~DS18B20();
     boolean search();
     void resetsearch();
     void setResolution(uint8_t newResolution);
