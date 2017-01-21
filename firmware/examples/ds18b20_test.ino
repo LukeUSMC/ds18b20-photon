@@ -35,7 +35,7 @@ if (millis() > DS18B20nextSampleTime){
 
 
 void publishData(){
-  if(!ds18b20.crcCheck()){
+  if(!ds18b20.crcCheck()){      //make sure the value is correct
     return;
   }
   sprintf(szInfo, "%2.2f", fahrenheit);
