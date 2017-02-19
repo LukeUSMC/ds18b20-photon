@@ -1,5 +1,7 @@
-#include "Particle-OneWire.h"
-#include "application.h"
+#pragma once
+
+#include <Particle.h>
+#include <OneWire.h>
 
 #define MAX_NAME 8
 #define MAX_RETRIES 3
@@ -13,7 +15,7 @@
 #define READPOWERSUPPLY 0xB4
 
 class DS18B20{
-private:
+  private:
     OneWire* ds;
     byte data[12];
     byte addr[8];
@@ -21,10 +23,11 @@ private:
     byte chiptype;
     byte _dataCRC;
     byte _readCRC;
+    bool _singleDrop;
     char szName[MAX_NAME];
 
-public:
-    DS18B20(uint16_t pin);
+  public:
+    DS18B20(uint16_t pi, bool singleDrop = false);
     ~DS18B20();
     boolean search();
     void resetsearch();
@@ -33,7 +36,7 @@ public:
     void getROM(char szROM[]);
     byte getChipType();
     char* getChipName();
-    float getTemperature();
+    float getTemperature(bool forceSelect = false);
     float convertToFahrenheit(float celsius);
     bool crcCheck();
 };
